@@ -45,8 +45,6 @@ namespace ItLabs.MultiTenant.Api
             services.TryAddTransient<TenantService<Tenant>>();
 
             services.TryAddTransient(typeof(IMongoDbContext<>), typeof(MongoDbContext<>));
-            
-            services.AddDbContext<TasksDbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

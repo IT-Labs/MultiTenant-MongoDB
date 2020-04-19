@@ -56,11 +56,6 @@ namespace ItLabs.MultiTenant.Core
             var connectionString = awsSecrets.GetValue("ConnectionString", defaultValue: string.Empty);
             var database = awsSecrets.GetValue("Database", defaultValue: string.Empty);
 
-            // if (string.IsNullOrEmpty(tenantId))
-            // {
-            //     throw new Exception($"Tenant data with secret name identifier: {secretTagKeyIdentifier} is not found");
-            // }
-
             if (string.IsNullOrEmpty(connectionString))
             {
                 throw new Exception($"Tenant {secretTagKeyIdentifier} has no ConnectionString defined");
