@@ -7,14 +7,14 @@ namespace ItLabs.MultiTenant.Api
     /// <summary>
     /// Task Entity
     /// </summary>
-    [BsonDiscriminator("myclass")]
     public class Task : IEntity
     {
         /// <summary>
         /// The task Id (identifier)
         /// </summary>
         [BsonId]
-        public BsonObjectId Id { get; set; }
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string Id { get; set; }
 
 
         /// <summary>
@@ -32,8 +32,6 @@ namespace ItLabs.MultiTenant.Api
         /// <summary>
         /// The task flag for marking it done
         /// </summary>
-        
-        [BsonRepresentation(BsonType.Boolean)]
         public bool IsDone { get; set; }
     }
 }

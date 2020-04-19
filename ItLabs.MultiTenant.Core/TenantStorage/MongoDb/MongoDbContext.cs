@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
 using MongoDB.Driver.Core;
+using MongoDB.Bson;
 
 namespace ItLabs.MultiTenant.Core.MongoDb
 {
@@ -27,7 +28,7 @@ namespace ItLabs.MultiTenant.Core.MongoDb
             return entities.Find(e => true).ToList();
         }
 
-        public T Get(string id)
+        public T Get(BsonObjectId id)
         {
             return entities.Find(e => e.Id == id).FirstOrDefault();
         }
@@ -38,7 +39,7 @@ namespace ItLabs.MultiTenant.Core.MongoDb
             return entity;
         }
 
-        public void Update(string id, T entity)
+        public void Update(BsonObjectId id, T entity)
         {
             entities.ReplaceOne(e => e.Id == id, entity);
         }
@@ -48,7 +49,7 @@ namespace ItLabs.MultiTenant.Core.MongoDb
             entities.DeleteOne(e => e.Id == entity.Id);
         }
 
-        public void Remove(string id)
+        public void Remove(BsonObjectId id)
         {
             entities.DeleteOne(e => e.Id == id);
         }
