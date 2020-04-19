@@ -32,6 +32,8 @@ namespace ItLabs.MultiTenant.Api
         /// <summary>
         /// The task flag for marking it done
         /// </summary>
+        
+        [BsonRepresentation(BsonType.Boolean)]
         public bool IsDone { get; set; }
     }
 }
